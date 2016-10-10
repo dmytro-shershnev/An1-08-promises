@@ -14,8 +14,16 @@
             {"id": "5", "action": "Deploy", "done": "false", "userId": "5", "userName": "Dmitriy"}
         ];
 
+        let users = [
+                {"name": "Ann June"},
+                {"name": "Ban Gule"},
+                {"name": "Cider Duren"}
+            ];
+
         return {
-            getTasks
+            getTasks,
+            getTasksNew,
+            getUsers
         };
 
         function getTasks() {
@@ -36,6 +44,26 @@
             }, 200);
 
             return def.promise;
+        }
+
+        function getTasksNew() {
+            return $q((resolve, reject) => {
+                $timeout(() => {
+                    let flag = true;
+
+                    flag ? resolve(tasks) : reject("Error from 2-nd function.");
+                }, 200);
+            });
+        }
+
+        function getUsers() {
+            return $q((resolve, reject) => {
+                $timeout(() => {
+                    let flag = true;
+
+                    flag ? resolve(users) : reject("Error from getUsers function.");
+                }, 700);
+            });
         }
     }
 
